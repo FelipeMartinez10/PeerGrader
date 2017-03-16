@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+
+import { Projects } from '../api/projects.js';
 
 import Project from './Project.jsx';
 
 // App component - represents the whole app
-export default class App extends Component {
-
+class App extends Component {
+  renderProjects() {
+    return this.props.projects.map((project) => (
+      <Project key={project._id} nombres={project.Nombres}/>
+    ));
+  }
 
   render() {
     return (
@@ -12,10 +19,22 @@ export default class App extends Component {
         <header>
           <h1>Peer Grader</h1>
         </header>
-        <h1>hjola</h1>
+        <div className='row'>
+          {this.renderProjects()}
+        </div>
 
-        <Project></Project>
+
       </div>
     );
   }
 }
+
+App.propTypes = {
+  projects: PropTypes.array.isRequired,
+};
+
+export default createContainer(() => {
+  return {
+    projects: Projects.find({}).fetch(),
+  };
+}, App);
