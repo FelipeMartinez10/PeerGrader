@@ -4,9 +4,9 @@ import React, { Component, PropTypes } from 'react';
 export default class Project extends Component {
   render() {
     return (
-      <div className='col-md-2'>
-        <h1>nombre</h1>
-        <h1>{this.props.nombres}</h1>
+      <div className='row projects'>
+        <h3>Nombre:</h3>
+        <h4>{this.props.nombres}</h4>
       </div>
     );
   }

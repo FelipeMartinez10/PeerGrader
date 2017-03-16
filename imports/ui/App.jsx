@@ -20,7 +20,12 @@ class App extends Component {
           <h1>Peer Grader</h1>
         </header>
         <div className='row'>
-          {this.renderProjects()}
+          <div className='col-md-6'>
+            {this.renderProjects()}
+          </div>
+          <div className='col-md-6'>
+
+          </div>  
         </div>
 
 
